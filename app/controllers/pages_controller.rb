@@ -7,4 +7,7 @@ class PagesController < ApplicationController
 
   def contactus
   end
+
+  def register
+  end
 end
