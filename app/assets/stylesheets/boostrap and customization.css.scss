@@ -1,7 +1,17 @@
-$body-bg:       #f1c40f;
-$navbar-default-bg:    #c0392b;
+@import url(http://fonts.googleapis.com/css?family=Lora:400,700);
+
+
+$body-bg:                   #f1c40f;
+$font-family-sans-serif:    'lora';
+$navbar-heigh:              45px;
+$navbar-default-bg:         #c0392b;
 $navbar-default-link-color:   white;
-$brand-primary:    #3498db;
-$jumbotron-bg:     #ecf0f1;
+$brand-primary:             #3498db;
+$jumbotron-bg:              #ecf0f1;
 
 @import 'bootstrap';
+
+
+.center {
+	text-align: center;
+}
