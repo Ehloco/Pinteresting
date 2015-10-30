@@ -23,45 +23,40 @@ class PinsController < ApplicationController
 
   def create
     @pin = current_user.pins.build(pin_params)
-
-
-    if @pin.save
+     if @pin.save
       redirect_to @pin, notice: 'Pin was successfully created.' 
     else
-     render :new 
+     render action: 'new' 
     end
-
   end
-
  
   def update
     if @pin.update(pin_params)
      redirect_to @pin , notice: 'Pin was successfully updated.' 
     else
      render :edit 
-  end
-
- 
- def destroy
-     @pin.destroy
-     redirect_to pins_url , notice: 'Pin was successfully destroyed.' 
     end
- end
-
+  end
+ 
+  def destroy
+    if @pin.destroy
+   redirect_to @pin, :notice => "Your post has been deleted"
+   end
+  end
+end
   private
     # Use callbacks to share common setup or constraints between actions.
     def set_pin
       @pin = Pin.find(params[:id])
     end
 
-  def correct_user
+    def correct_user
       @pin = current_user.pins.find_by(id: params[:id])
       redirect_to pins_path, notice: "Not authorized to edit this pin" if @pin.nil?
     end
 
 
     # Never trust parameters from the scary internet, only allow the white list through.
-    def pin_params
-      params.require(:pin).permit(:description)
-    end
-end
+     def pin_params
+      params.require(:pin).permit(:description, :image)
+      end
